@@ -3,4 +3,5 @@ DB_PASSWORD=user
 DB_HOST=local
 DB_PORT=5533
 DB_NAME=db_name
+DATABASE_URL=pg://pg:user@localhost:5432/dbname
 JWT_SECRET=ABC_123
