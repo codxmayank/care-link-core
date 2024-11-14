@@ -1,3 +1,4 @@
+import User from '../models/userModel.js';
 import pool from '../config/db.js';
 import { createUserQuery, fetchUserByIdQuery } from './queries/userSql.js';
 
@@ -10,11 +11,21 @@ const createUser = async (userData) => {
 }
 
 const fetchUserById = async (id) => {
-  const res = await pool.query(fetchUserByIdQuery,
-    [id]
-  );
-  // return data based on user schema instead
-  return res.rows[0];
+  try {
+    const res = await pool.query(
+      fetchUserByIdQuery,
+      [id]
+    );
+    if (!res.rows[0]) return null;
+
+    const userData = res.rows[0];
+    const user = new User(userData);
+
+    return user;
+  } catch (error) {
+    console.error('Error fetching user:', error);
+    throw error;
+  }
 }
 
 export default {
