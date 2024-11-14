@@ -3,9 +3,9 @@ import pool from '../config/db.js';
 import { createUserQuery, fetchUserByIdQuery } from './queries/userSql.js';
 
 const createUser = async (userData) => {
-  const { name, age, phone, email, password } = userData;
+  const { name, age, email, phone, password } = userData;
   const res = await pool.query(createUserQuery,
-    [name, age, phone, email, password]
+    [name, age, email, phone, password]
   );
   return res.rows[0];
 }

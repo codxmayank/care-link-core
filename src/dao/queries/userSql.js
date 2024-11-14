@@ -1,5 +1,5 @@
 const createUserQuery = `
-  INSERT INTO users (name, age, phone, email, password)
+  INSERT INTO users (name, age, email, phone, password)
   VALUES ($1, $2, $3, $4, $5)
 `;
 
