@@ -4,7 +4,10 @@ const createUserQuery = `
 `;
 
 const fetchUserByIdQuery = `
-  SELECT * from users where id=$1
+  SELECT
+    id, name, age, email, phone
+  from users
+  where id=$1
 `;
 
 export { createUserQuery, fetchUserByIdQuery };
