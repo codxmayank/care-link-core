@@ -1,6 +1,6 @@
 import User from '../models/userModel.js';
 import pool from '../config/db.js';
-import { createUserQuery, fetchUserByIdQuery } from './queries/userSql.js';
+import { createUserQuery, fetchUserByIdQuery, patchUserByIdQuery } from './queries/userSql.js';
 
 const createUser = async (userData) => {
   const { name, age, email, phone, password } = userData;
@@ -28,7 +28,22 @@ const fetchUserById = async (id) => {
   }
 }
 
+const patchUserById = async (userId, userData) => {
+  try {
+    const { name, age, email, phone } = userData;
+    const res = await pool.query(patchUserByIdQuery,
+      [userId, name, age, email, phone]
+    );
+
+    return res.rows[0];
+  } catch (error) {
+    console.error('Error fetching user:', error);
+    throw error;
+  }
+}
+
 export default {
   createUser,
-  fetchUserById
+  fetchUserById,
+  patchUserById
 };

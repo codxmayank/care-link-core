@@ -17,3 +17,12 @@ export const getUserById = async (req, res, next) => {
     next(error);
   }
 }
+
+export const updateUserById = async (req, res, next) => {
+  try {
+    const userData = await userService.updateUserById(req.params.id, req.body);
+    res.status(201).json(userData);
+  } catch (error) {
+    next(error);
+  }
+}
