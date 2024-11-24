@@ -10,4 +10,15 @@ const fetchUserByIdQuery = `
   where id=$1
 `;
 
-export { createUserQuery, fetchUserByIdQuery };
+const patchUserByIdQuery = `
+  update users
+  set
+    name=$2,
+    age=$3,
+    email=$4,
+    phone=$5
+  where
+    id=$1
+`
+
+export { createUserQuery, fetchUserByIdQuery, patchUserByIdQuery };

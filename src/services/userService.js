@@ -8,7 +8,12 @@ const getUserById = async (id) => {
   return await userDao.fetchUserById(id);
 }
 
+const updateUserById = async (id, userData) => {
+  return await userDao.patchUserById(id, userData);
+}
+
 export default {
   createUser,
-  getUserById
+  getUserById,
+  updateUserById
 };
