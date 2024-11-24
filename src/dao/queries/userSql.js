@@ -7,7 +7,7 @@ const fetchUserByIdQuery = `
   SELECT
     id, name, age, email, phone
   from users
-  where id=$1
+  where id=$1 and is_active=true
 `;
 
 const patchUserByIdQuery = `
@@ -18,7 +18,7 @@ const patchUserByIdQuery = `
     email=$4,
     phone=$5
   where
-    id=$1
+    id=$1 and is_active=true
 `
 
 export { createUserQuery, fetchUserByIdQuery, patchUserByIdQuery };
