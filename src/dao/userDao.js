@@ -3,11 +3,16 @@ import pool from '../config/db.js';
 import { createUserQuery, deactivateUserByIdQuery, fetchUserByIdQuery, patchUserByIdQuery } from './queries/userSql.js';
 
 const createUser = async (userData) => {
-  const { name, age, email, phone, password } = userData;
-  const res = await pool.query(createUserQuery,
-    [name, age, email, phone, password]
-  );
-  return res.rows[0];
+  try {
+    const { name, age, email, phone, password } = userData;
+    const res = await pool.query(createUserQuery,
+      [name, age, email, phone, password]
+    );
+    return res.rows[0];
+  } catch (error) {
+    console.error('Error creating user:', error);
+    throw error;
+  }
 }
 
 const fetchUserById = async (id) => {
