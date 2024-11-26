@@ -26,3 +26,12 @@ export const updateUserById = async (req, res, next) => {
     next(error);
   }
 }
+
+export const deactivateUserById = async (req, res, next) => {
+  try {
+    const userData = await userService.deactivateUserById(req.params.id);
+    res.status(201).json(userData);
+  } catch (error) {
+    next(error);
+  }
+}
