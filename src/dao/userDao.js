@@ -1,6 +1,6 @@
 import User from '../models/userModel.js';
 import pool from '../config/db.js';
-import { createUserQuery, fetchUserByIdQuery, patchUserByIdQuery } from './queries/userSql.js';
+import { createUserQuery, deactivateUserByIdQuery, fetchUserByIdQuery, patchUserByIdQuery } from './queries/userSql.js';
 
 const createUser = async (userData) => {
   const { name, age, email, phone, password } = userData;
@@ -37,7 +37,20 @@ const patchUserById = async (userId, userData) => {
 
     return res.rows[0];
   } catch (error) {
-    console.error('Error fetching user:', error);
+    console.error('Error updating user:', error);
+    throw error;
+  }
+}
+
+
+const deactivateUserById = async (userId) => {
+  try {
+    const res = await pool.query(deactivateUserByIdQuery,
+      [userId]
+    );
+    return res.rows[0];
+  } catch (error) {
+    console.error('Error deleting user:', error);
     throw error;
   }
 }
@@ -45,5 +58,6 @@ const patchUserById = async (userId, userData) => {
 export default {
   createUser,
   fetchUserById,
-  patchUserById
+  patchUserById,
+  deactivateUserById
 };

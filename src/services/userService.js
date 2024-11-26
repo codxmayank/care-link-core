@@ -12,8 +12,13 @@ const updateUserById = async (id, userData) => {
   return await userDao.patchUserById(id, userData);
 }
 
+const deactivateUserById = async (id) => {
+  return await userDao.deactivateUserById(id);
+}
+
 export default {
   createUser,
   getUserById,
-  updateUserById
+  updateUserById,
+  deactivateUserById
 };

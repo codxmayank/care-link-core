@@ -21,4 +21,12 @@ const patchUserByIdQuery = `
     id=$1 and is_active=true
 `
 
-export { createUserQuery, fetchUserByIdQuery, patchUserByIdQuery };
+const deactivateUserByIdQuery = `
+  update users
+  set
+    is_active=false
+  where
+    id=$1 and is_active=true
+`
+
+export { createUserQuery, fetchUserByIdQuery, patchUserByIdQuery, deactivateUserByIdQuery };
