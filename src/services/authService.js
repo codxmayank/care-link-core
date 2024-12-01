@@ -7,7 +7,6 @@ import { messages } from '../constants/messages.js';
 export const registerUser = async (userReqData) => {
   const { name, age, email, phone, password } = userReqData;
   const existingUser = await getUserByEmail(email);
-  console.log(existingUser);
 
   if (existingUser) {
     throw new Error(messages.userExists);
