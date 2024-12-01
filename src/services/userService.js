@@ -1,7 +1,8 @@
 import userDao from "../dao/userDao.js"
+import { createUserDao } from '../dao/userDao.js'
 
 const createUser = async (userData) => {
-  return await userDao.createUser(userData);
+  return await createUserDao(userData);
 }
 
 const getUserById = async (id) => {
