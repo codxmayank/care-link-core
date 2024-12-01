@@ -1,5 +1,5 @@
 // src/dao/todoDAO.js
-import pool from '../config/db.js';
+import pool from '../configs/db.js';
 
 // Fetch all todos
 const fetchAllTodos = async () => {

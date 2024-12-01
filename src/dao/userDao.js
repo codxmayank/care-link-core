@@ -1,8 +1,8 @@
-import User from '../models/userModel.js';
-import pool from '../config/db.js';
-import { createUserQuery, deactivateUserByIdQuery, fetchUserByIdQuery, patchUserByIdQuery } from './queries/userSql.js';
+import User, { UserData } from '../models/userModel.js';
+import pool from '../configs/db.js';
+import { createUserQuery, deactivateUserByIdQuery, fetchUserByIdQuery, fetchUserByEmailQuery, patchUserByIdQuery } from './queries/userSql.js';
 
-const createUser = async (userData) => {
+export const createUserDao = async (userData) => {
   try {
     const { name, age, email, phone, password } = userData;
     const res = await pool.query(createUserQuery,
@@ -60,8 +60,25 @@ const deactivateUserById = async (userId) => {
   }
 }
 
+export const getUserByEmail = async (email) => {
+  try {
+    const res = await pool.query(
+      fetchUserByEmailQuery,
+      [email]
+    );
+    if (!res.rows?.length || !res.rows[0]) return null;
+
+    const userData = res.rows[0];
+    const user = new UserData(userData);
+
+    return user;
+  } catch (error) {
+    console.error('Error fetching user:', error);
+    throw error;
+  }
+}
+
 export default {
-  createUser,
   fetchUserById,
   patchUserById,
   deactivateUserById

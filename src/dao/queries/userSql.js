@@ -10,6 +10,13 @@ const fetchUserByIdQuery = `
   where id=$1 and is_active=true
 `;
 
+const fetchUserByEmailQuery = `
+  SELECT
+    id, name, age, email, phone, password
+  from users
+  where email=$1 and is_active=true
+`;
+
 const patchUserByIdQuery = `
   update users
   set
@@ -29,4 +36,4 @@ const deactivateUserByIdQuery = `
     id=$1 and is_active=true
 `
 
-export { createUserQuery, fetchUserByIdQuery, patchUserByIdQuery, deactivateUserByIdQuery };
+export { createUserQuery, fetchUserByIdQuery, fetchUserByEmailQuery, patchUserByIdQuery, deactivateUserByIdQuery };
