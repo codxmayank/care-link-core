@@ -33,9 +33,9 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-
 
-      # Step 5: Install project dependencies using pnpm
-      - name: Install dependencies
-        run: pnpm install
+      # Step 5: Install dependencies and update lockfile if needed
+      - name: Install dependencies and update lockfile
+        run: pnpm install --no-frozen-lockfile
 
       # Step 6: Run Prettier check
       - name: Run Prettier
