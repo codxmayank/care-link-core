@@ -26,9 +26,9 @@ jobs:
         run: pnpm install
 
       # Step 4: Run ESLint
-      - name: Run ESLint
-        run: pnpm eslint . --ext .js,.ts
-
-      # Step 5: Run Prettier check
       - name: Run Prettier
         run: pnpm prettier --check "**/*.{js,ts,json,md}"
+
+      # Step 5: Run Prettier check
+      - name: Run ESLint
+        run: pnpm eslint .
