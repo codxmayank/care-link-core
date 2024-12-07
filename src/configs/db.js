@@ -18,7 +18,7 @@ const pool = new Pool({
 
 // Event listener for successful connection
 pool.on('connect', () => {
-  console.log('Connected to the database');
+  console.info('Connected to the database');
 });
 
 // Event listener for errors

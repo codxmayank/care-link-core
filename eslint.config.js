@@ -14,7 +14,9 @@ export default [
     },
     rules: {
       'prettier/prettier': 'error',
-      ...eslintRecommended.rules
+      ...eslintRecommended.rules,
+      'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
+      'no-unused-vars': ['error', { vars: 'all', args: 'none' }]
     }
   },
   {
