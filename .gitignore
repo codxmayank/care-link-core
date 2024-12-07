@@ -1,6 +1,9 @@
 # folders
 node_modules
+
+# ides
 .vscode
+.idea
 
 # files
 .env
