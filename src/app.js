@@ -1,6 +1,6 @@
 import express from 'express';
-import userRoutes from './routes/userRoutes.js'
-import authRoutes from './routes/authRoutes.js'
+import userRoutes from './routes/userRoutes.js';
+import authRoutes from './routes/authRoutes.js';
 import errorHandler from './middlewares/errorHandler.js';
 import bodyParser from 'body-parser';
 

@@ -12,7 +12,13 @@ export const registerUser = async (userReqData) => {
     throw new Error(messages.userExists);
   }
   const hashedPassword = await hashPassword(password);
-  return await createUserDao({ name, age, email, phone, password: hashedPassword });
+  return await createUserDao({
+    name,
+    age,
+    email,
+    phone,
+    password: hashedPassword
+  });
 };
 
 export const loginUser = async (email, password) => {
@@ -22,7 +28,7 @@ export const loginUser = async (email, password) => {
   }
 
   const token = jwt.sign({ email: user.email }, config.jwtSecret, {
-    expiresIn: config.jwtExpiration,
+    expiresIn: config.jwtExpiration
   });
   return token;
 };

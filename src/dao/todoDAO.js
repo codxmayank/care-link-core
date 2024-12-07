@@ -5,13 +5,15 @@ import pool from '../configs/db.js';
 const fetchAllTodos = async () => {
   const result = await pool.query('SELECT * FROM todo_list ORDER BY id');
   console.log(result);
-  
+
   return result.rows;
 };
 
 // Fetch a todo by ID
 const fetchTodoById = async (id) => {
-  const result = await pool.query('SELECT * FROM todo_list WHERE id = $1', [id]);
+  const result = await pool.query('SELECT * FROM todo_list WHERE id = $1', [
+    id
+  ]);
   return result.rows[0];
 };
 
@@ -37,7 +39,10 @@ const updateTodo = async (id, todoData) => {
 
 // Delete a todo by ID
 const deleteTodo = async (id) => {
-  const result = await pool.query('DELETE FROM todo_list WHERE id = $1 RETURNING *', [id]);
+  const result = await pool.query(
+    'DELETE FROM todo_list WHERE id = $1 RETURNING *',
+    [id]
+  );
   return result.rows[0];
 };
 
@@ -46,5 +51,5 @@ export default {
   fetchTodoById,
   createTodo,
   updateTodo,
-  deleteTodo,
+  deleteTodo
 };

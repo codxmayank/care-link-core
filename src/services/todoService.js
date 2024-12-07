@@ -25,5 +25,5 @@ export default {
   getTodoById,
   addTodo,
   editTodo,
-  removeTodo,
+  removeTodo
 };
