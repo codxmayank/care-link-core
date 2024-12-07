@@ -3,6 +3,7 @@ import userRoutes from './routes/userRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import errorHandler from './middlewares/errorHandler.js';
 import bodyParser from 'body-parser';
+import helmet from 'helmet';
 
 const app = express();
 
