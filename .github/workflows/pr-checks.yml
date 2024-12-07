@@ -21,18 +21,22 @@ jobs:
           node-version: 18
           cache: 'pnpm'
 
-      # Step 3: Install pnpm globally
+      # Step 3: Install pnpm globally (ensure pnpm is installed)
       - name: Install pnpm
         run: npm install -g pnpm
 
-      # Step 4: Install project dependencies using pnpm
+      # Step 4: Verify pnpm installation
+      - name: Verify pnpm installation
+        run: pnpm --version
+
+      # Step 5: Install project dependencies using pnpm
       - name: Install dependencies
         run: pnpm install
 
-      # Step 5: Run Prettier check
+      # Step 6: Run Prettier check
       - name: Run Prettier
         run: pnpm prettier --check "**/*.{js,ts,json,md}"
 
-      # Step 6: Run ESLint
+      # Step 7: Run ESLint
       - name: Run ESLint
         run: pnpm eslint .
