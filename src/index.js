@@ -10,4 +10,4 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-// TODO: express-validator, validation, format and lint, pre-commits, api docs, deployment, envs, logger
+// TODO: express-validator, validation, api docs, deployment, envs, logger
