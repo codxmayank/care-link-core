@@ -1,5 +1,6 @@
 import app from './app.js';
 import dotenv from 'dotenv';
+let a = 10;
 
 dotenv.config(); // Load environment variables
 
@@ -10,4 +11,3 @@ app.listen(PORT, () => {
 });
 
 // TODO: express-validator, validation, format and lint, pre-commits, api docs, deployment, envs, logger
-

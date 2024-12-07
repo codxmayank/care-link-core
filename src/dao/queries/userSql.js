@@ -26,7 +26,7 @@ const patchUserByIdQuery = `
     phone=$5
   where
     id=$1 and is_active=true
-`
+`;
 
 const deactivateUserByIdQuery = `
   update users
@@ -34,6 +34,12 @@ const deactivateUserByIdQuery = `
     is_active=false
   where
     id=$1 and is_active=true
-`
+`;
 
-export { createUserQuery, fetchUserByIdQuery, fetchUserByEmailQuery, patchUserByIdQuery, deactivateUserByIdQuery };
+export {
+  createUserQuery,
+  fetchUserByIdQuery,
+  fetchUserByEmailQuery,
+  patchUserByIdQuery,
+  deactivateUserByIdQuery
+};

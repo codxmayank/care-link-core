@@ -1,4 +1,4 @@
-import userService from "../services/userService.js";
+import userService from '../services/userService.js';
 
 export const createUser = async (req, res, next) => {
   try {
@@ -16,7 +16,7 @@ export const getUserById = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-}
+};
 
 export const updateUserById = async (req, res, next) => {
   try {
@@ -25,7 +25,7 @@ export const updateUserById = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-}
+};
 
 export const deactivateUserById = async (req, res, next) => {
   try {
@@ -34,4 +34,4 @@ export const deactivateUserById = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-}
+};

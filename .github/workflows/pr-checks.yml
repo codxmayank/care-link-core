@@ -1,0 +1,34 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Step 2: Set up Node.js (use your desired version)
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: pnpm install
+
+      # Step 4: Run ESLint
+      - name: Run ESLint
+        run: pnpm eslint . --ext .js,.ts
+
+      # Step 5: Run Prettier check
+      - name: Run Prettier
+        run: pnpm prettier --check "**/*.{js,ts,json,md}"
