@@ -1,36 +1,30 @@
-// eslint.config.js
-
 import eslintRecommended from 'eslint-config-eslint';
-import prettier from 'eslint-plugin-prettier';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
-import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
   {
-    // Base configuration for JavaScript files
     plugins: {
       prettier: eslintPluginPrettier
     },
     languageOptions: {
       parserOptions: {
-        ecmaVersion: 2021, // For general JavaScript support
-        sourceType: 'module' // For ES module support
+        ecmaVersion: 2021,
+        sourceType: 'module'
       }
     },
     rules: {
       'prettier/prettier': 'error',
-      ...eslintRecommended.rules // Apply eslint:recommended rules
+      ...eslintRecommended.rules
     }
   },
   {
-    // Configuration for TypeScript files
     plugins: {
       prettier: eslintPluginPrettier
     },
-    files: ['*.ts', '*.tsx'], // Apply only to TypeScript files
+    files: ['*.ts', '*.tsx'],
     languageOptions: {
       parserOptions: {
-        ecmaVersion: 2020 // TypeScript-specific parsing
+        ecmaVersion: 2020
       }
     },
     rules: {
@@ -38,7 +32,6 @@ export default [
     }
   },
   {
-    // Prettier configuration (separate block for all files)
     plugins: {
       prettier: eslintPluginPrettier
     },
