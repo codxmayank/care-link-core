@@ -19,15 +19,19 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'pnpm'
 
       # Step 3: Install pnpm globally (ensure pnpm is installed)
       - name: Install pnpm
         run: npm install -g pnpm
 
-      # Step 4: Verify pnpm installation
-      - name: Verify pnpm installation
-        run: pnpm --version
+      # Step 4: Cache pnpm dependencies
+      - name: Cache pnpm dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
 
       # Step 5: Install project dependencies using pnpm
       - name: Install dependencies
