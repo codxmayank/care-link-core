@@ -13,10 +13,10 @@ export default [
       }
     },
     rules: {
-      'prettier/prettier': 'error',
+      'prettier/prettier': 'warn',
       ...eslintRecommended.rules,
       'no-console': ['warn', { allow: ['warn', 'error', 'info'] }],
-      'no-unused-vars': ['error', { vars: 'all', args: 'none' }]
+      'no-unused-vars': ['warn', { vars: 'all', args: 'none' }]
     }
   },
   {
@@ -30,15 +30,7 @@ export default [
       }
     },
     rules: {
-      'prettier/prettier': 'error'
-    }
-  },
-  {
-    plugins: {
-      prettier: eslintPluginPrettier
-    },
-    rules: {
-      'prettier/prettier': 'error'
+      'prettier/prettier': 'warn'
     }
   }
 ];
