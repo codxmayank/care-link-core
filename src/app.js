@@ -11,8 +11,8 @@ app.use(bodyParser.json());
 app.use(helmet());
 
 app.use(express.json()); // Middleware to parse incoming JSON requests
+app.use('/api/v1/auth', authRoutes); // Routes for auth API
 app.use('/api/v1/user', userRoutes); // Routes for user API
-app.use('/api/v1/auth', authRoutes); // Routes for user API
 app.use(errorHandler); // Global error handling middleware
 
 export default app;
