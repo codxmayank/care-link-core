@@ -9,4 +9,4 @@ app.listen(PORT, () => {
   console.info(`Server running on port ${PORT}`);
 });
 
-// TODO: api docs, deployment, envs, logger
+// TODO: api docs

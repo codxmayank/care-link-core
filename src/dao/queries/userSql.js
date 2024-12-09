@@ -24,6 +24,7 @@ const patchUserByIdQuery = `
     age=$3,
     email=$4,
     phone=$5
+    updated_ts = CURRENT_TIMESTAMP
   where
     id=$1 and is_active=true
 `;
@@ -32,6 +33,7 @@ const deactivateUserByIdQuery = `
   update users
   set
     is_active=false
+    updated_ts = CURRENT_TIMESTAMP
   where
     id=$1 and is_active=true
 `;
