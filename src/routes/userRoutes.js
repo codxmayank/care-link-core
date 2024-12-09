@@ -6,14 +6,19 @@ import {
   updateUserById
 } from '../controllers/userController.js';
 import { authenticate } from '../middlewares/authenticate.js';
+import {
+  createUserValidator,
+  updateUserValidator
+} from '../validators/userValidator.js';
+import { validateMiddleware } from '../middlewares/validate.js';
 
 const router = express.Router();
 
 router.use(authenticate);
 
-router.post('/', createUser);
+router.post('/', createUserValidator, validateMiddleware, createUser);
 router.get('/:id', getUserById);
-router.patch('/:id', updateUserById);
+router.patch('/:id', updateUserValidator, validateMiddleware, updateUserById);
 router.delete('/:id', deactivateUserById);
 
 export default router;
