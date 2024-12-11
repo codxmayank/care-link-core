@@ -1,24 +1,24 @@
 const createUserQuery = `
-  INSERT INTO users (name, age, email, phone, password)
+  INSERT INTO patients (name, age, email, phone, password)
   VALUES ($1, $2, $3, $4, $5)
 `;
 
 const fetchUserByIdQuery = `
   SELECT
-    id, name, age, email, phone
-  from users
-  where id=$1 and is_active=true
+    patient_id, name, age, email, phone
+  from patients
+  where patient_id=$1 and is_active=true
 `;
 
 const fetchUserByEmailQuery = `
   SELECT
-    id, name, age, email, phone, password
-  from users
+    patient_id, name, age, email, phone, password
+  from patients
   where email=$1 and is_active=true
 `;
 
 const patchUserByIdQuery = `
-  update users
+  update patients
   set
     name=$2,
     age=$3,
@@ -26,16 +26,16 @@ const patchUserByIdQuery = `
     phone=$5
     updated_at = CURRENT_TIMESTAMP
   where
-    id=$1 and is_active=true
+    patient_id=$1 and is_active=true
 `;
 
 const deactivateUserByIdQuery = `
-  update users
+  update patients
   set
     is_active=false
     updated_at = CURRENT_TIMESTAMP
   where
-    id=$1 and is_active=true
+    patient_id=$1 and is_active=true
 `;
 
 export {
